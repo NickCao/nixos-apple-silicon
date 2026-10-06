@@ -58,7 +58,7 @@
 
       nixbot = forAllSystems (system: {
         inherit (outputs.checks."${system}") formatting;
-        inherit (outputs.packages."${system}") linux-asahi uboot-asahi installer-bootstrap;
+        inherit (outputs.packages."${system}") m1n1 linux-asahi uboot-asahi installer-bootstrap;
       });
 
       devShells = forAllSystems (system: {
@@ -95,7 +95,7 @@
         in
         {
           linux-asahi = pkgs.linux-asahi.kernel;
-          inherit (pkgs) uboot-asahi libva-v4l2_request-sofus13;
+          inherit (pkgs) m1n1 uboot-asahi libva-v4l2_request-sofus13;
 
           installer-bootstrap = mkInstallerBootstrapCustom {
             inherit system;

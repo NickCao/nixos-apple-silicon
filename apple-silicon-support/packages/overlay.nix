@@ -1,4 +1,9 @@
 final: prev: {
+  # Import directly to preserve nixpkgs' .override interface for customLogo.
+  m1n1 = import ./m1n1 {
+    inherit (prev) m1n1;
+    inherit (final) fetchFromGitHub nix-update-script;
+  };
   libva-v4l2_request-sofus13 = final.callPackage ./libva-v4l2_request-sofus13 { };
   linux-asahi = final.callPackage ./linux-asahi { };
   uboot-asahi = final.callPackage ./uboot-asahi { };
