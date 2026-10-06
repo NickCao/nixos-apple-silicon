@@ -3,18 +3,19 @@
   fetchFromGitHub,
   buildUBoot,
   m1n1,
+  defconfig ? "apple_j873_defconfig",
 }:
 
 (buildUBoot rec {
   src = fetchFromGitHub {
-    owner = "AsahiLinux";
+    owner = "aurora-silicon";
     repo = "u-boot";
-    rev = "asahi-v2026.07-2";
-    hash = "sha256-9E79VceZcPw55zj6BBwgIBP/2OrHRS/w3ypGyOWfE6U=";
+    rev = "55aaa060bfabefc2247d38fd1ede9341c3786899";
+    hash = "sha256-+Utb4H3UI6J6EDXsUWdfVPPTJJSQrXP7vdfgzpsO5GQ=";
   };
-  version = "2026.07-2-asahi";
+  version = "2026.07-unstable-2026-10-03";
 
-  defconfig = "apple_m1_defconfig";
+  inherit defconfig;
   extraMeta.platforms = [ "aarch64-linux" ];
   filesToInstall = [
     "u-boot-nodtb.bin.gz"
