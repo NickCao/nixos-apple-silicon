@@ -55,6 +55,9 @@ let
               # Available in the RAM initrd without loading modules.
               ARM_APPLE_SOC_CPUFREQ = yes;
 
+              # The pinned driver uses unexported PCI core helpers.
+              PCIE_APPLE = yes;
+
               # Might lead to the machine rebooting if not loaded soon enough
               APPLE_WATCHDOG = yes;
 
