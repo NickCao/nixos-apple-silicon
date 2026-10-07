@@ -26,15 +26,15 @@ let
         inherit stdenv lib;
 
         pname = "linux-asahi";
-        version = "7.1.13";
+        version = "7.1.12";
         modDirVersion = version;
         extraMeta.branch = "7.1";
 
         src = fetchFromGitHub {
-          owner = "AsahiLinux";
+          owner = "aurora-silicon";
           repo = "linux";
-          tag = "asahi-7.1.13-3";
-          hash = "sha256-quvdcQ2LbYQyCDQFKc6KPjWv+f5fpWfUrXo5Id0kpwE=";
+          rev = "f9572b54204e2cd81c764ce8bdaf0fa1d31ae762";
+          hash = "sha256-jv9HRIFe1daZs3HjwW1Y6+4P/reDV8r3Yj1Yn7o/WVo=";
         };
 
         kernelPatches = [
@@ -47,6 +47,13 @@ let
 
               ARM64_MEMORY_MODEL_CONTROL = yes;
               ARM64_ACTLR_STATE = yes;
+
+              # Console on M6 uses DockChannel.
+              SERIAL_APPLE_DOCKCHANNEL = yes;
+              SERIAL_APPLE_DOCKCHANNEL_EARLYCON = yes;
+
+              # Available in the RAM initrd without loading modules.
+              ARM_APPLE_SOC_CPUFREQ = yes;
 
               # Might lead to the machine rebooting if not loaded soon enough
               APPLE_WATCHDOG = yes;
