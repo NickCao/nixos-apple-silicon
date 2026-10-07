@@ -4,6 +4,7 @@ final: prev: {
     inherit (prev) m1n1;
     inherit (final) fetchFromGitHub nix-update-script;
   };
+  kisd = final.callPackage ./kisd { };
   libva-v4l2_request-sofus13 = final.callPackage ./libva-v4l2_request-sofus13 { };
   linux-asahi = final.callPackage ./linux-asahi { };
   uboot-asahi = final.callPackage ./uboot-asahi { };
