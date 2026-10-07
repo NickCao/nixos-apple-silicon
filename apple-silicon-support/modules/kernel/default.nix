@@ -63,6 +63,10 @@
     boot.kernelParams = [
       "earlycon"
       "console=tty0"
+      "console=ttyDC0"
+      # Aurora m1n1 does not append the M6 idle and delay workarounds.
+      "idle=nop"
+      "arm64.nowfxt"
       "boot.shell_on_fail"
       # Apple's SSDs are slow (~dozens of ms) at processing flush requests which
       # slows down programs that make a lot of fsync calls. This parameter sets
